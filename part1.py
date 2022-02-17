@@ -1,13 +1,12 @@
 #Question: You will need to solve a relaxed version of the NYC instance where we do not have the energy constraint. You can use any algorithm we discussed in the lectures. Note that this is equivalent to solving the shortest path problem. The starting and ending nodes are set to be ‘1’ and ‘50’.
 
-import json
-import queue
+import json,queue
+import numpy as np
+
 
 #load Graph.json
 with open('Graph.json','r') as f :
   graph = json.load(f)
-
-
 
 def uniform_cost_search(graph, start, goal):
     ''' Function to perform BFS to find path in a graph
@@ -69,6 +68,6 @@ goal =50
 nodesExplored, nodesProcessed = uniform_cost_search(graph=graph,start=start,goal=goal)
 path = reconstruct_path(nodesExplored,start=start,goal=goal)
 
-print("total nodes visited: ", nodesProcessed)
-
+print("Total nodes in graph: ",len(graph))
+print("total nodes visited: ", nodesProcessed," | ", np.round(100*(nodesProcessed/len(graph),2),"%"))
 print("Path through the graph: ",path)
