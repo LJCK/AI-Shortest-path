@@ -1,11 +1,11 @@
 import json, queue, math
-with open("D:\School folder\Year2-2\CZ3005 AI\Lab\Shortest path\AI-Shortest-path\Distance.json","r") as distance :
+with open("Distance.json","r") as distance :
     dis =json.load(distance)
-with open("D:\School folder\Year2-2\CZ3005 AI\Lab\Shortest path\AI-Shortest-path\Graph.json","r") as g :
+with open("Graph.json","r") as g :
     graph = json.load(g)
-with open("D:\School folder\Year2-2\CZ3005 AI\Lab\Shortest path\AI-Shortest-path\Cost.json","r") as cost :
+with open("Cost.json","r") as cost :
     budget = json.load(cost)
-with open("D:\School folder\Year2-2\CZ3005 AI\Lab\Shortest path\AI-Shortest-path\Coordinate.json","r") as coor :
+with open("Coordinate.json","r") as coor :
     coordinate = json.load(coor)
 
 def uniform_cost_search_part1( start, goal):
@@ -196,11 +196,13 @@ nodesExplored_part1, pathsExplored_part1, nodesProcessed_part1 = uniform_cost_se
 path_part1,energycost_part1 = reconstruct_path(nodesExplored_part1, start = start, goal = goal, question=1)
 
 print("Task 1:")
-print("Total nodes in graph: ",len(graph))
-print("total nodes visited: ", nodesProcessed_part1)
-print("Path through the graph: ",path_part1)
-print("Number of nodes in the path: ", len(path_part1))
-print("Total distance: ", pathsExplored_part1[path_part1[-1]])
+# print("Total nodes in graph: ",len(graph))
+# print("total nodes visited: ", nodesProcessed_part1)
+# print("Path through the graph: ",path_part1)
+print("Shortest Path: ",end='')
+print(*path_part1,sep="->")
+# print("Number of nodes traversed: ", len(path_part1))
+print("Shortest distance: ", pathsExplored_part1[path_part1[-1]])
 print("\n\n")
 
 # Task 2
@@ -208,11 +210,13 @@ nodesExplored_part2, pathsExplored_part2, nodesProcessed_part2 = uniform_cost_se
 path_part2, energycost_part2 = reconstruct_path(nodesExplored_part2, start = start, goal = goal,question=2)
 
 print("Task 2:")
-print("Total nodes in graph: ",len(graph))
-print("total nodes visited: ", nodesProcessed_part2)
-print("Path through the graph: ",path_part2)
-print("Number of nodes in the path: ", len(path_part2))
-print("Total distance: ", pathsExplored_part2[path_part2[-1]])
+# print("Total nodes in graph: ",len(graph))
+# print("total nodes visited: ", nodesProcessed_part2)
+# print("Path through the graph: ",path_part2)
+print("Shortest Path: ",end='')
+print(*path_part2,sep="->")
+# print("Number of nodes traversed: ", len(path_part2))
+print("Shortest distance: ", pathsExplored_part2[path_part2[-1]])
 print("Total energy cost: ", energycost_part2)
 print("\n\n")
 
@@ -221,9 +225,11 @@ nodesExplored_part3, pathsExplored_part3, nodesProcessed_part3 = astar_search_pa
 path_part3, energycost_part3 = reconstruct_path(nodesExplored_part3, start = start, goal = goal,question=3)
 
 print("Task 3:")
-print("Total nodes in graph: ",len(graph))
-print("total nodes visited: ", nodesProcessed_part3)
-print("Path through the graph: ",path_part3)
-print("Number of nodes in the path: ", len(path_part3))
-print("Total distance: ", pathsExplored_part3[path_part3[-1]])
+# print("Total nodes in graph: ",len(graph))
+# print("total nodes visited: ", nodesProcessed_part3)
+# print("Path through the graph: ",path_part3)
+print("Shortest Path: ",end='')
+print(*path_part3,sep="->")
+# print("Number of nodes traversed: ", len(path_part3))
+print("Shortest distance: ", pathsExplored_part3[path_part3[-1]])
 print("Total energy cost: ", energycost_part3)
