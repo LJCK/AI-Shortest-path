@@ -31,7 +31,7 @@ def uniform_cost_search_part1( start, goal):
         if currentNode == goal:
             break
         
-        # explore every single neighbor of current node
+        # explore every single neighbour of current node
         for nextNode in graph[str(currentNode)]:
 
             # compute the new distance for the node based on the current node
@@ -79,7 +79,7 @@ def uniform_cost_search_part2( start, goal):
         if currentNode == goal:
             break
         
-        # explore every single neighbor of current node
+        # explore every single neighbour of current node
         for nextNode in graph[str(currentNode)]:
 
             # compute the new energy cost for the node based on the current node
@@ -142,7 +142,7 @@ def astar_search_part3(start, goal):
         if currentNode == goal:
             break
         
-        # explore every single neighbor of current node
+        # explore every single neighbour of current node
         for nextNode in graph[str(currentNode)]:
             
             # compute the new energy cost for the node based on the current node
