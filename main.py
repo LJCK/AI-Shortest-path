@@ -57,21 +57,20 @@ def uniform_cost_search_part1( start, goal):
 
 def uniform_cost_search_part2( start, goal):
     
-    frontier = queue.PriorityQueue()    # FIFO Queue for Frontier
+    frontier = queue.PriorityQueue()      # Priority Queue for Frontier
     
     # initialization
-    frontier.put((0,start))         # Add the start node to frontier
+    frontier.put((0, start))    # Add the start node to frontier with priority 0
     explored = {}               # Dict of explored nodes {node : parentNode}
     explored[start] = None      # start node has no parent node
     pathbudget = {}             # Dict of path energy cost {node : cost}
     pathbudget[start] = 0       # start node has no cost
     pathcost = {}               # Dict of path distane {node : distance}
-    pathcost[start]=0           # start node has no distance
+    pathcost[start] = 0         # start node has no distance
     processed = 0               # Count of total nodes processed
     
     while not frontier.empty():
         # get next node from frontier
-        
         currentNode = frontier.get()[1]
         processed += 1
         
@@ -81,25 +80,24 @@ def uniform_cost_search_part2( start, goal):
         
         # explore every single neighbour of current node
         for nextNode in graph[str(currentNode)]:
-
+            
             # compute the new energy cost for the node based on the current node
             energycost = budget[str(currentNode)+','+str(nextNode)]
             newbudget = pathbudget[currentNode]+energycost
-
+            
             # compute the new distance for the node based on the current node
             weight = dis[str(currentNode)+','+str(nextNode)]
             newcost = pathcost[currentNode] + weight
-
-            # ignore if it has already been explored and new path distance is larger than old path distance and energy cost exceed the limit 
-            if ((nextNode not in explored) or (newcost < pathcost[currentNode])) and (newbudget<=287932) :
-                
+            
+            # ignore if it has already been explored and new path distance is larger than old path distance
+            if ((nextNode not in explored) or (newcost < pathcost[nextNode])) and (newbudget<=287932):
+        
                 # set priority as newcost 
                 priority = newcost
                 
                 # put new node in frontier with priority
                 frontier.put((priority, nextNode))
                 
-                # keep track of the updated path budget
                 pathbudget[nextNode] = newbudget
                 
                 # assign current node as parent
@@ -107,7 +105,7 @@ def uniform_cost_search_part2( start, goal):
                 
                 # keep track of the updated path cost
                 pathcost[nextNode] = newcost
-    
+        
     return explored, pathcost, processed
 
 def heuristic(nodeA, nodeB):
@@ -211,7 +209,7 @@ path_part2, energycost_part2 = reconstruct_path(nodesExplored_part2, start = sta
 
 print("Task 2:")
 # print("Total nodes in graph: ",len(graph))
-# print("total nodes visited: ", nodesProcessed_part2)
+print("total nodes visited: ", nodesProcessed_part2)
 # print("Path through the graph: ",path_part2)
 print("Shortest Path: ",end='')
 print(*path_part2,sep="->")
@@ -226,7 +224,7 @@ path_part3, energycost_part3 = reconstruct_path(nodesExplored_part3, start = sta
 
 print("Task 3:")
 # print("Total nodes in graph: ",len(graph))
-# print("total nodes visited: ", nodesProcessed_part3)
+print("total nodes visited: ", nodesProcessed_part3)
 # print("Path through the graph: ",path_part3)
 print("Shortest Path: ",end='')
 print(*path_part3,sep="->")
